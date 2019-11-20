@@ -1,0 +1,73 @@
+
+<nav class="navbar navbar-expand-lg navbar-light" >
+        <a class="navbar-brand text-white" href="#"><h4></h4></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link text-white" href="#"><h5>VENDOR</h5><span class="sr-only">(current)</span></a>
+            </li>
+            </ul>
+      
+            <ul class="navbar-nav mr-auto center">
+                <li class="nav-item active">
+                <!-- <a class="nav-link text-white" href="#"><h4>Heading</h4><span class="sr-only">(current)</span></a>-->
+                 </li>
+                 </ul>
+      
+                 <ul class="navbar-nav text-right">
+                    <li class="nav-item active"  style="margin-right: 5%;">
+                        <a class="nav-link text-white"  href="#"></a>
+                    </li>
+                    <!--<button class="btn btn-danger" type="submit"><h5>Logout</h5></button>-->
+                </ul>
+                <button class="btn btn-primary" (click)="Logout()"> LOGOUT</button>
+                   
+         
+        </div>
+</nav>
+<br><br>
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button (click)= "AddVentor()" type="button" style="float:right" class="btn btn-outline-info">ADD VENDOR</button>&nbsp;
+         <i class="fas fa-search" aria-hidden="true"></i>
+         <input [(ngModel)] ="search" (ngModelChange)="searchVendor(search)" class="form-control mr-sm-2" type="search" placeholder="Search: Vendor Name/Contact Name/Location/Service" aria-label="Search">
+         <button (click)="listVendor(search)"  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</nav>
+<br>
+VENDOR AND CONTACT DETAILS
+<br>
+<table class="table table-striped">
+        <thead class="thead-dark">
+    <tr>
+    <th>Vendor Name</th>
+    <th>Address</th>
+    <th>Location</th>
+    <th>Service</th>
+    <th>Pincode</th>
+    <th>Contact Name</th>
+    <th>Department</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Action</th>
+</tr>
+</thead>
+<tr *ngFor="let vc of vendor | paginate:{itemsPerPage:10,currentPage:p}">
+        <td>{{vc.vendorName}}</td>
+        <td>{{vc.address}}</td>
+        <td>{{vc.location}}</td>
+        <td>{{vc.service}}</td>
+        <td>{{vc.pincode}}</td>
+        <td>{{vc.cName}}</td>
+        <td>{{vc.department}}</td>
+        <td>{{vc.email}}</td>
+        <td>{{vc.phone}}</td>
+        <td><a (click)="editVendor(vc.vId)"><img src="assets/edit.png"/></a>
+            <a (click)="disableVendor(vc)"><img src="assets/delete.png"/></a></td>
+    </tr>
+</table>
+<br>
+</div>
+<pagination-controls (pageChange)="page =$event"></pagination-controls>

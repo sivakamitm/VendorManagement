@@ -1,0 +1,110 @@
+
+<nav class="navbar navbar-expand-lg navbar-light" >
+        <a class="navbar-brand text-white" href="#"><h4></h4></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link text-white" href="#"><h5>VENDOR</h5><span class="sr-only">(current)</span></a>
+            </li>
+            </ul>
+      
+            <ul class="navbar-nav mr-auto center">
+                <li class="nav-item active">
+                <!-- <a class="nav-link text-white" href="#"><h4>Heading</h4><span class="sr-only">(current)</span></a>-->
+                 </li>
+                 </ul>
+      
+                 <ul class="navbar-nav text-right">
+                    <li class="nav-item active"  style="margin-right: 5%;">
+                        <a class="nav-link text-white"  href="#"></a>
+                    </li>
+                    <!--<button class="btn btn-danger" type="submit"><h5>Logout</h5></button>-->
+                </ul>
+                <button class="btn btn-primary" (click)="Logout()"> LOGOUT</button>
+                   
+         
+        </div>
+</nav>
+<div class="container">
+        <br>
+        <!--<h2 class="d-flex justify-content-center">ADD NEW MEDICINE</h2>-->
+        <br>
+        ADD/EDIT VENDOR
+        <section id="cover">
+        <div class="form-group row">
+           <input type="hidden" name="vendor.vId" class="form-control"> 
+        </div>        
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Vendor NAME :</label>
+            <div class="col-10">
+                <input class="form-control" #vn="ngModel" [(ngModel)]="vendor.vendorName" placeholder="Enter Vendor Name" pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" required type="text" name="vendorName">
+                <div class="validation-error" *ngIf="vn.invalid && vn.touched"  style="color: red">Please Enter a valid Name</div>
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label for="example-datetime-local-input" class="col-2 col-form-label"> Address :</label>
+            <div class="col-10">
+                <input class="form-control" [(ngModel)]="vendor.address" placeholder="Enter Address" type="text" name="address">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Location :</label>
+            <div class="col-10">
+                    <select class="form-control text_length" [(ngModel)] ="vendor.location" placeholder="select location" name="location">
+                            <option value="" disabled selected>Select your option</option>
+                        <option>Trivandrum</option>
+                        <option>Chennai</option>
+                        <option>Banglore</option>
+                    </select>
+                </div>
+        </div>
+
+        <div class="form-group row">
+                <label for="example-text-input" class="col-2 col-form-label">Service :</label>
+                <div class="col-10">
+                    <input class="form-control"  [(ngModel)]="vendor.service" placeholder="Enter Service" type="text" name="service">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">pincode:</label>
+                    <div class="col-10">
+                        <input class="form-control"  [(ngModel)]="vendor.pincode" placeholder="Enter pincode" type="text" name="pincode">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">Contact person name :</label>
+                        <div class="col-10">
+                            <input class="form-control"  [(ngModel)]="vendor.cName" placeholder="Enter Contact name" type="text" name="cName">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                            <label for="example-text-input" class="col-2 col-form-label">Department :</label>
+                            <div class="col-10">
+                                <input class="form-control"  [(ngModel)]="vendor.department" placeholder="Enter Department" type="text" name="department">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                                <label for="example-text-input" class="col-2 col-form-label">Phone :</label>
+                                <div class="col-10">
+                                    <input class="form-control"  [(ngModel)]="vendor.phone" placeholder="Enter Mobile" #phn="ngModel" pattern="^[0][1-9]\d{9}$|^[1-9]\d{9}$" required type="text" name="phone">
+                                    <div class="validation-error" *ngIf="phn.invalid && phn.touched"  style="color: red">Please Enter a valid Phone number</div>
+                                </div>
+                            </div>
+                        <div class="form-group row">
+                                <label for="example-text-input" class="col-2 col-form-label">Email :</label>
+                                <div class="col-10">
+                                    <input class="form-control"  [(ngModel)]="vendor.email" #em="ngModel" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" required placeholder="Enter Email" type="text" name="email">
+                                    <div class="validation-error" *ngIf="em.invalid && em.touched"  style="color: red">Please Enter a Email</div>
+                                </div>
+                            </div>
+        <br>
+        <br>
+    </section>
+    <button  (click)="addVendor(vendor.vId)" type="button" class="btn btn-success" style="float:right;" >SAVE</button>
